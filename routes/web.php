@@ -25,13 +25,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/chirps', function () {
         $message = request('messege');
-        return Chirp::create([
+        Chirp::create([
             'messege' => $message,
             'user_id'=> auth()->id(), 
         ]);
 
+        session()->flash('status');
 
-        
+        return to_route('chirps.index');
+    
     });
 });
 
