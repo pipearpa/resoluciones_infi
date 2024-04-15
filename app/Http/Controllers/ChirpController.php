@@ -12,15 +12,15 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        //
+        return view('chirps.index');  
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +28,20 @@ class ChirpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            ['message' => 'required'
+        ]);
+
+
+
+        Chirp::create([
+            'message' => $request->get('messege'),
+            'user_id'=> auth()->id(), 
+        ]);
+
+        session()->flash('status', 'Chirp created successfully!');
+
+        return to_route('chirps.index');
     }
 
     /**

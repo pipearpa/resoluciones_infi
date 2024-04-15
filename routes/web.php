@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Chirp;
+
 
 
 Route::get('/', function () {
@@ -17,24 +18,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/chirps', function () 
-    {
-       return view('chirps.index');   
+    Route::get('/chirps', [ChirpController::class, 'index'] )->
+     name('chirps.index');
 
-    })-> name('chirps.index');
+    Route::post('/chirps', [ChirpController::class, 'store'])
+        ->name('chirps.store');
 
-    Route::post('/chirps', function () {
-        $message = request('messege');
-        Chirp::create([
-            'messege' => $message,
-            'user_id'=> auth()->id(), 
-        ]);
-
-        session()->flash('status');
-
-        return to_route('chirps.index');
+       
     
     });
-});
+
 
 require __DIR__.'/auth.php';

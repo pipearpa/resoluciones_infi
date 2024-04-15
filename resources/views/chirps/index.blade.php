@@ -9,15 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if (session('status'))
-                       <div class="bg-green-500">Crear Chirp</div>
-                    @endif
                     
-                    <form method="POST">
+                    
+                    <form method="POST" action="{{ route('chirps.store')}}">
                         @csrf
-                        <textarea name="messege" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-y text-gray-900 focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="¿Qué estás pensando?"">
+                        <textarea name="message" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-y text-gray-900 focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="¿Qué estás pensando?"">
 
                         </textarea>
+                        @error('message') {{$message}}@enderror
                         
                         <x-primary-button>Chirps</x-primary-button>
                             
