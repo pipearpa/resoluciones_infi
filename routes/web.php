@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ConsultaPqrCiudadanoController;
+use App\Http\Controllers\NuevapqrController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/consultapqrciudadano', [ConsultaPqrCiudadanoController::class,
+ 'index'])->name('consultapqrciudadano');
+
+ Route::get('/nuevapqr', [NuevapqrController::class,
+  'index'])->name('nuevapqr'); 
 
 
 
@@ -27,6 +34,9 @@ Route::middleware('auth')->group(function () {
        
     
     });
+
+   
+
 
 
 require __DIR__.'/auth.php';
