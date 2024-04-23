@@ -16,7 +16,7 @@
                 <label for="numero_pqr" class="form-label">Número de PQR:</label>
                 <input type="text" class="form-control" id="numero_pqr" name="numero_pqr" required>
             </div>
-            <button type="submit" class="btn btn-primary">Consultar</button>
+            <button type="submit" name="consultarpqr" id= "consultarpqr" class="btn btn-primary">Consultar</button>
         </form>
     </div>
     <!-- Agrega enlaces a tus archivos JavaScript aquí -->

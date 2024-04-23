@@ -17,6 +17,9 @@ Route::get('/consultapqrciudadano', [ConsultaPqrCiudadanoController::class,
  Route::get('/nuevapqr', [NuevapqrController::class,
   'index'])->name('nuevapqr'); 
 
+  Route::post('/crearnuevapqr', [NuevapqrController::class,
+   'store'])->name('crearnuevapqr.store');
+
 
 
 Route::middleware('auth')->group(function () {
