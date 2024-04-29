@@ -7,13 +7,192 @@
         <title>PQR</title>
 
         <!-- Fonts -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
         <!-- Styles -->
         <style>
-            /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.absolute{position:absolute}.relative{position:relative}.-left-20{left:-5rem}.top-0{top:0px}.-bottom-16{bottom:-4rem}.-left-16{left:-4rem}.-mx-3{margin-left:-0.75rem;margin-right:-0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.aspect-video{aspect-ratio:16 / 9}.size-12{width:3rem;height:3rem}.size-5{width:1.25rem;height:1.25rem}.size-6{width:1.5rem;height:1.5rem}.h-12{height:3rem}.h-40{height:10rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-full{width:100%}.w-\[calc\(100\%\+8rem\)\]{width:calc(100% + 8rem)}.w-auto{width:auto}.max-w-\[877px\]{max-width:877px}.max-w-2xl{max-width:42rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.self-center{align-self:center}.overflow-hidden{overflow:hidden}.rounded-\[10px\]{border-radius:10px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-sm{border-radius:0.125rem}.bg-\[\#FF2D20\]\/10{background-color:rgb(255 45 32 / 0.1)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-white{--tw-gradient-to:rgb(255 255 255 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fff var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.stroke-\[\#FF2D20\]{stroke:#fff020}.object-cover{object-fit:cover}.object-top{object-position:top}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.font-sans{font-family:Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-sm\/relaxed{font-size:0.875rem;line-height:1.625}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-semibold{font-weight:600}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-\[0px_14px_34px_0px_rgba\(0\2c 0\2c 0\2c 0\.08\)\]{--tw-shadow:0px 14px 34px 0px rgba(0,0,0,0.08);--tw-shadow-colored:0px 14px 34px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-transparent{--tw-ring-color:transparent}.ring-white\/\[0\.05\]{--tw-ring-color:rgb(255 255 255 / 0.05)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.06\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.25\)\]{--tw-drop-shadow:drop-shadow(0px 4px 34px rgba(0,0,0,0.25));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.selection\:bg-\[\#FF2D20\] *::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-\[\#FF2D20\]::selection{--tw-bg-opacity:1;background-color:rgb(255 45 32 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity))}.hover\:text-black\/70:hover{color:rgb(0 0 0 / 0.7)}.hover\:ring-black\/20:hover{--tw-ring-color:rgb(0 0 0 / 0.2)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus-visible\:ring-1:focus-visible{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}@media (min-width: 640px){.sm\:size-16{width:4rem;height:4rem}.sm\:size-6{width:1.5rem;height:1.5rem}.sm\:pt-5{padding-top:1.25rem}}@media (min-width: 768px){.md\:row-span-3{grid-row:span 3 / span 3}}@media (min-width: 1024px){.lg\:col-start-2{grid-column-start:2}.lg\:h-16{height:4rem}.lg\:max-w-7xl{max-width:80rem}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:flex-col{flex-direction:column}.lg\:items-end{align-items:flex-end}.lg\:justify-center{justify-content:center}.lg\:gap-8{gap:2rem}.lg\:p-10{padding:2.5rem}.lg\:pb-10{padding-bottom:2.5rem}.lg\:pt-0{padding-top:0px}.lg\:text-\[\#FF2D20\]{--tw-text-opacity:1;color:rgb(255 45 32 / var(--tw-text-opacity))}}@media (prefers-color-scheme: dark){.dark\:block{display:block}.dark\:hidden{display:none}.dark\:bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity))}.dark\:bg-zinc-900{--tw-bg-opacity:1;background-color:rgb(24 24 27 / var(--tw-bg-opacity))}.dark\:via-zinc-900{--tw-gradient-to:rgb(24 24 27 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #18181b var(--tw-gradient-via-position), var(--tw-gradient-to)}.dark\:to-zinc-900{--tw-gradient-to:#18181b var(--tw-gradient-to-position)}.dark\:text-white\/50{color:rgb(255 255 255 / 0.5)}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-white\/70{color:rgb(255 255 255 / 0.7)}.dark\:ring-zinc-800{--tw-ring-opacity:1;--tw-ring-color:rgb(39 39 42 / var(--tw-ring-opacity))}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:hover\:text-white\/70:hover{color:rgb(255 255 255 / 0.7)}.dark\:hover\:text-white\/80:hover{color:rgb(255 255 255 / 0.8)}.dark\:hover\:ring-zinc-700:hover{--tw-ring-opacity:1;--tw-ring-color:rgb(63 63 70 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-\[\#FF2D20\]:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 45 32 / var(--tw-ring-opacity))}.dark\:focus-visible\:ring-white:focus-visible{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255 / var(--tw-ring-opacity))}}
+            .logo-pequeno {
+                position: relative;
+                max-width: 500px;
+                max-height: 100px;
+                bottom: 20px;
+                filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+            }
+            .logo {
+                max-width: 100px; /* Ajusta el tamaño máximo del logo según sea necesario */
+                height: auto; /* Mantiene la proporción de la imagen */
+                filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.5));
+            }
+            .nuevaPqr ,.consultarPqr {
+                background-color: #468faf; /* Blue background */
+                color: #fff; /* White text color */
+                border: none; /* Remove default border */
+                padding: 15px 30px; /* Adjust padding */
+                border-radius: 5px; /* Rounded corners */
+                cursor: pointer; /* Indicate clickable area */
+                font-size: 18px; /* Adjust font size */
+                text-transform: uppercase; /* Make text uppercase */
+                transition: background-color 0.3s ease; /* Smooth hover effect */
+                }
+
+            .nuevaPqr:hover {
+                background-color: #2a6f97; /* Darker blue on hover */
+                }
+            .consultarPqr:hover {
+                background-color: #2a6f97; /* Darker blue on hover */
+                }
+
+            .contenedor-main {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .parrafo {
+                padding: 15px;
+                width: 45%; /* Ajusta el ancho según sea necesario */
+                float: right; /* Para ubicar a la derecha */
+                background-color: #89c2d9;
+                margin:0 auto;
+                border-radius:20px;
+                box-shadow: 0 5px 8px rgba(0, 0, 0.1, 0.3);
+            }
+
+            .Botones {
+                padding: 15px;
+                width: 45%; /* Ajusta el ancho según sea necesario */
+                float: left; /* Para ubicar a la izquierda */
+                text-align: center; /* Centra el texto */
+                background-color: #89c2d9;
+                margin:0 auto;
+                border-radius:20px;
+                box-shadow: 0 5px 8px rgba(0, 0, 0.1, 0.3);
+            }
+                        /* /DECORACIÓN FOOTER/ */
+            .custom-shape-divider-bottom-1712869018 {
+                margin:0;
+                padding: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                z-index: -1; /* Para que esté detrás del contenido */
+                overflow: hidden;
+                transform: rotate(180deg);
+            }
+
+            .custom-shape-divider-bottom-1712869018 svg {
+                position: relative;
+                display: block;
+                width: calc(100% + 1.3px);
+                height: 154px;
+            }
+
+            .custom-shape-divider-bottom-1712869018 .shape-fill {
+                fill: #265073;
+            }
+
+            
+            /* /#D369C1 COLOR POR DEFECTO DE LA DECORACIÓN DE ABAJO/ */
+
+            /* For mobile devices */
+            @media (max-width: 767px) {
+                .custom-shape-divider-bottom-1712869018 svg {
+                    width: calc(100% + 1.3px);
+                    height: 80px;
+                }
+
+                .logo-pequeno {
+                    bottom: 10px;
+                }
+
+                * {
+                    overflow-x: hidden;
+                }
+            
+                .navbar {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .nav-links {
+                    margin-top: 10px; /* Espacio entre el logo y los enlaces */
+                }
+
+                .nav-link {
+                    margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+                    margin-top: 10px; /* Espacio entre los enlaces */
+                }
+
+                .contenedor-main {
+                    
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                .Botones {
+                    width: 85%;
+                }
+
+                .Botones h3 {
+                    overflow: hidden;
+                }
+
+                .parrafo {
+                    width: 85%;
+                }
+
+                .parrafo h2 {
+                    overflow: hidden;
+                }
+
+                .footer-diseño {
+                    justify-content: center;
+                }
+            }
+
+            .footer-diseño {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                align-content: center;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: stretch;
+                padding: 10px 20px; /* Ajusta el espaciado según sea necesario */
+                background-color: #a9d6e5; /* Color de fondo de la navbar */
+                box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+                flex-wrap: wrap;
+                flex-direction: row;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            .nav-link {
+                margin-left: 20px; /* Espaciado entre los enlaces */
+                padding: 10px 15px; /* Espaciado interno de los enlaces */
+                border-radius: 5px; /* Bordes redondeados */
+                text-decoration: none; /* Sin subrayado */
+                color: #333; /* Color del texto */
+                transition: cubic-bezier(0.3s ease) ; /* Transición suave */
+            }
+
+            .logo-container {
+                flex-shrink: 0; /* Evita que el logo se encoja */
+            }
+
+            .nav-link:hover {
+                background-color: #e9ecef; /* Color de fondo al pasar el mouse */
+            }
+
+            /* Estilos adicionales según sea necesario */
         </style>
+
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
@@ -21,69 +200,137 @@
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#62e769] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                        <div class="flex lg:justify-center lg:col-start-2">
-                            <style>
-                                .logo-pequeno {
-                                    max-width: 100px;
-                                    max-height: 100px;
-                                }
-                            </style>
-                            
-                            <img src="https://pqrs.infimanizales.com/public/img/infi.jpg" alt="Logo de infimanizales" class="logo-pequeno">
-                            
-                        </div>
+                        <div class="flex lg:justify-center lg:col-start-2"></div>
+                        
                         @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
+                        <nav class="navbar container-fluid">
+                            <div class="logo-container">
+                                <img src="https://infimanizales.com/wp-content/uploads/2021/12/Infi-Manizales-Logo-color.png" alt="Logo de infimanizales" class="logo">
+                            </div>
+                            <div class="nav-links">
                                 @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#20cbff] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Menu Principal
-                                    </a>
+                                    <a href="{{ url('/dashboard') }}" class="nav-link">Menu Principal</a>
                                 @else
-                                    <a
-                                        href="{{ route('login') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#20f0ff] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Iniciar Sesion
-                                    </a>
-
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Registrarme
-                                        </a>
-                                    @endif
+                                    <div class="dropdown">
+                                        <button id="dropdownButton" class="nav-link dropdown-toggle">☰ Menú</button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownButton">
+                                                <a href="{{ route('login') }}" class="dropdown-item">Iniciar Sesión</a>
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="dropdown-item">Registrarme</a>
+                                            @endif
+                                        </div>
+                                    </div>
                                 @endauth
-                            </nav>
-                        @endif
+                            </div>
+                            
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                            <style>
+                                .nav-links {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 20px;
+                                    }
+
+                                    .nav-link {
+                                    font-size: 18px;
+                                    text-decoration: none;
+                                    color: #333;
+                                    }
+
+                                    /* Styles for the drop-down menu */
+                                    .dropdown {
+                                    position: relative;
+                                    }
+
+                                    .dropdown-menu {
+                                    display: none;
+                                    position: absolute;
+                                    background-color: #fff;
+                                    min-width: 160px;
+                                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                    z-index: 1;
+                                    border-radius: 5px;
+                                    right: 0; /* Align the drop-down to the right */
+                                    top: 100%;
+                                    }
+
+                                    .dropdown-item {
+                                    padding: 10px 20px;
+                                    text-decoration: none;
+                                    display: block;
+                                    color: #333;
+                                    }
+
+                                    .dropdown-item:hover {
+                                    background-color: #f5f5f5;
+                                    }
+
+                                    .dropdown.open .dropdown-menu {
+                                    display: block;
+                                    }
+
+                                    /* Responsive styles for smaller screens */
+                                    @media (max-width: 768px) {
+                                        .dropdown {
+                                            display: block; /* Show the button on small screens */
+                                        }
+
+                                        .dropdown-menu {
+                                            position:static;
+                                            width: 100%; /* Ocupa todo el ancho disponible */
+                                            max-width: 100vw; /* Evita desbordamiento horizontal */
+                                            top: 50px; /* Ajusta la distancia desde la parte superior */
+                                            left: 0;
+                                            right: 0;
+                                            border-radius: 5px; /* Quita el borde redondeado */
+                                            z-index: 1;
+                                        }
+
+                                        .footer-diseño {
+                                            justify-content: center;
+                                        }
+                                        
+                                    }
+
+                            </style>
+                            <script>
+                                // JavaScript para activar el botón desplegable en pantallas pequeñas
+                                $(document).ready(function() {
+                                    $('#dropdownButton').on('click', function() {
+                                        $('.dropdown-menu').toggle();
+                                    });
+                                });
+                            </script>
+                        </nav>
+                    @endif
                     </header>
                     <section id="home" name="home">
                         <div id="headerwrap">
                             <div class="container">
                                 <div class="row centered">
                                     <div class="col-lg-6">
-                                        <img src="{{ asset('/img/infi.jpg') }}" alt="">
+                                        {{-- <img src="{{ asset('/img/infi.jpg') }}" alt=""> --}}
                                         <br>
                                         <br>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <h1><b>SISTEMA DE PETICIONES, QUEJAS Y <BR>RECLAMOS  (PQR)</b></h1>
-                                        <br>
-                                        <p><b>INFI-MANIZALES</b> ofrece a los ciudadanos un sistema de peticiones, quejas y reclamos, por medio del cual podrá realizar solicitudes y tener un control sobre la misma, permitiendo saber si se encuentra en trámite o si fue solucionada y las observaciones respectivas.</p>
-                
-                                        <div class="col-lg-6">
-                                            <h1><b>CONSULTAR SOLICITUD</bb></h1>
-                                            <h3><a href="{{ url('/consultapqrciudadano') }}" class="btn btn-lg btn-success">CONSULTAR PQR</a></h3>
+                                    <div class="contenedor-main">
+                                        <div class="parrafo col-lg-6">
+                                            <h2><b>SISTEMA DE PETICIONES, QUEJAS Y <BR>RECLAMOS (PQR)</b></h2>
                                             <br>
+                                            <p><b>INFI-MANIZALES</b> ofrece a los ciudadanos un sistema de peticiones, quejas y reclamos, por medio del cual podrá realizar solicitudes y tener un control sobre la misma, permitiendo saber si se encuentra en trámite o si fue solucionada y las observaciones respectivas.</p>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <h1><b>NUEVA SOLICITUD</bb></h1>
-                                            <h3><a href="{{ url('/nuevapqr') }}" class="btn btn-lg btn-success">NUEVO PQR</a></h3>
-                                            <br>
+                                        <div class="Botones col-lg-6">
+                                            <h3><b>CONSULTAR SOLICITUD</b></h3>
+                                            <form action="{{ url('/consultapqrciudadano') }}" method="GET" style="margin: 20px;">
+                                                <button type="submit" class="consultarPqr btn btn-lg btn-success">CONSULTAR PQR</button>
+                                            </form>
+
+                                            <h3><b>NUEVA SOLICITUD</b></h3>
+                                            <form action="{{ url('/nuevapqr') }}" method="GET" >
+                                                <button type="submit" class="nuevaPqr btn btn-lg btn-success">NUEVO PQR</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -95,34 +342,22 @@
                         </div>
                         <!--/ #headerwrap -->
                     </section>
-                
-                    <div id="c">
-                        <div class="container">
+                    <footer class="footer-diseño py-16 text-center text-sm text-black dark:text-white/70">
+                        <img src="https://www.peoplecontact.com.co/images/peoplecontact-1.png" alt="Logo de peopleContact" class="logo-pequeno">
                             <p>
-                                <strong>Desarrollado por <a id="enlaceSoftG" target="blank" href="https://www.peoplecontact.com.co/">PeopleContact</a></strong>
-                                <style>
-                                    .logo-pequeno {
-                                        max-width: 100px;
-                                        max-height: 100px;
-                                    }
-                                </style>
-                                
-                                <img src="https://www.peoplecontact.com.co/images/peoplecontact-1.png" alt="Logo de peopleContact" class="logo-pequeno">
-                                <br>
+                                <strong>Desarrollado por <a id="enlaceSoftG" target="blank" href="https://www.peoplecontact.com.co/" style="text-decoration: none; color: black;">PeopleContact</a></strong>
                             </p>
-                
-                        </div>
-                    </div>
-
-                   
-
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Felipe Aristizabal Padilla - Practicante Desarrollo
-                        <br/>
-                        Carlos - Auxiliar Desarrollo
                     </footer>
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html> 
+<div class="custom-shape-divider-bottom-1712869018">
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"      preserveAspectRatio="none">
+                            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                        </svg>
+                    </div>

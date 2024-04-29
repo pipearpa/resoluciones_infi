@@ -11,7 +11,7 @@ class ConsultaPqrCiudadanoController extends Controller
     {
         return view('consultapqrciudadano');
 
-        
     }
-    
+
+   
 }

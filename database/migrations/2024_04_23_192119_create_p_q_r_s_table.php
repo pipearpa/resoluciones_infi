@@ -16,6 +16,13 @@ return new class extends Migration
             $table->string('tipo');
             $table->text('descripcion');    
             $table->timestamps();
+            $table->text('nombre');   
+            $table->text('tipoDocumento');   
+            $table->text('numero_documento');   
+            $table->text('email');   
+            $table->string('numeroTel');   
+            $table->text('direccion');   
+            $table->text('respuesta');   
         });
     }
 
