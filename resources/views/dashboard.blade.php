@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="contenido overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    {{ __("Bienvenido Al Panel Administrativo!") }}
                 </div>
 
                 <div class="container">
@@ -17,7 +17,9 @@
                         @foreach ($pqrs as $index => $pqr)
                             <div class="item">
                                 <h3>Tipo: {{ $pqr->tipo }}</h3>
-                                <br/>
+                                <h3>Nombre: {{ $pqr->nombre }}</h3>
+                                <h3>Tipo Respuesta: {{ $pqr->respuesta }}</h3>
+                                <h3>Documento: {{ $pqr->numero_documento }}</h3>
                                 <p>Descripción PQR: {{ $pqr->descripcion }}</p>
                                 <!-- Agrega aquí más campos que desees mostrar -->
                             </div>
