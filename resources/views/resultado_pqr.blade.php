@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #89c2d9;
             margin: 0;
             padding: 20px;
         }
@@ -24,6 +24,10 @@
         h1 {
             color: #333;
             margin-bottom: 20px;
+            position: relative;
+            align-items: center;
+            display: flex;
+            justify-content: center;
         }
 
         p {
@@ -57,6 +61,11 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            display: flex;
+            position:relative;
+            width: fit-content;
+            margin: 0 auto;
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -112,8 +121,8 @@
             <p>{{ $pqr->numeroTel }}</p>
         </div>
         <br/>
-      
-        <a href="http://localhost/pqr_infi_mzls/public"" class="btn">Volver</a>
+
+        <a href="http://localhost/pqr_infi_mzls/public" class="btn">Volver</a>
     </div>
 </body>
 </html>

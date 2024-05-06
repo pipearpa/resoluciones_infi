@@ -24,7 +24,7 @@
                         <p class="text-center">Diligencia el siguiente formulario para dar trámite a su petición, queja o reclamo por el nuevo sistema de PQR de INFI-MANIZALES, podrá tener un seguimiento de su solicitud por medio de la sección de consulta PQR.</p>
                     </div>
                     <!-- Formulario de creación de nueva PQR -->
-                    <form action="{{ route('crearnuevapqr.store') }}" method="POST">
+                    <form action="{{ route('crearnuevapqr.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="anonimo" name="anonimo" onchange="toggleCampos()">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre o Razón Social:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre">
+                            <input type="text" class="form-control" id="nombre" name="nombre" >
                         </div>
                         <div class="mb-3">
                             <label for="tipoDocumento" class="form-label">Tipo de Documento:</label>
@@ -46,19 +46,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="numero_documento" class="form-label">Número de Documento:</label>
-                            <input type="text" class="form-control" id="numero_documento" name="numero_documento">
+                            <input type="text" class="form-control" id="numero_documento" name="numero_documento" >
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email" required >
                         </div>
                         <div class="mb-3">
                             <label for="numeroTel" class="form-label">Número de Telefono:</label>
-                            <input type="numeroTel" class="form-control" id="numeroTel" name="numeroTel">
+                            <input type="numeroTel" class="form-control" id="numeroTel" name="numeroTel" >
                         </div>
                         <div class="mb-3">
                             <label for="direccion" class="form-label">Dirección:</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion">
+                            <input type="text" class="form-control" id="direccion" name="direccion" >
                         </div>
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo de Solicitud:</label>
@@ -82,16 +82,19 @@
                                 <option value="Fisico">Medio Fisico</option>
                             </select>
                         </div>
-                        {{-- <div class="mb-3">
+                        <div class="mb-3">
                             <label class="col-md-4 control-label">Nuevo Archivo</label>
                             <div class="col-md-6">
-                              <input type="file" class="form-control" name="file" >
+                                <input type="file" class="form-control" name="archivo" >
                             </div>
-                        </div> --}}
+                        </div>
+                        
+                        
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="terminosCondiciones" name="terminosCondiciones" required>
                             <label class="form-check-label" for="terminosCondiciones">Acepto los términos y condiciones</label>
                         </div>
+                        
                         <button type="submit" class="btn btn-primary" style="display: flex; margin: 0 auto;">Enviar PQR</button>
                     </form>
                     <!-- Mensajes de retroalimentación -->
@@ -231,7 +234,7 @@
 <script>
     function toggleCampos() {
         var anonimoCheckbox = document.getElementById('anonimo');
-        var camposOcultar = ['nombre', 'tipoDocumento', 'numero_documento', 'email', 'numeroTel', 'direccion', 'respuesta'];
+        var camposOcultar = ['nombre', 'tipoDocumento', 'numero_documento', 'numeroTel', 'direccion'];
 
         if (anonimoCheckbox.checked) {
             camposOcultar.forEach(function(campo) {

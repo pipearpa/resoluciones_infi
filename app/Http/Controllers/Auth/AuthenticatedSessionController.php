@@ -16,7 +16,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+        
         return view('auth.login');
+        
     }
 
     /**
@@ -28,6 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        toastr()->success('Ha ingresado correctamente','BIENVENIDO',['timeOut' => 1000]);
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -42,6 +45,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
+        toastr()->success('Usted ha cerrado sesión','NOS VEMOS PRONTO',['timeOut' => 1000]);
         return redirect('/');
     }
 }

@@ -47,6 +47,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        toastr()->success('Usuario registrado con exito');
         return redirect(route('dashboard', absolute: false));
     }
 }

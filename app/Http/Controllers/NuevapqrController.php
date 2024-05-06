@@ -4,67 +4,60 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pqr;
-//use Illuminate\Support\Facades\Uuid;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class NuevapqrController extends Controller
 {
-    public function index(){
-        return view('/nuevapqr');
+    public function index()
+    {
+        return view('nuevapqr');
     }
-
     public function store(Request $request)
     {
-         // Validación de los datos del formulario
-    $validatedData = $request->validate([
-        'tipo' => 'required',
-        'descripcion' => 'required',
-        'respuesta' => 'required',
-        //'terminosCondiciones' => 'accepted',
-        'nombre' => 'nullable', // Hacer el campo nombre opcional
-    ]);
+        // Validación de los datos del formulario
+        $validatedData = $request->validate([
+            'tipo' => 'required',
+            'descripcion' => 'required',
+            'respuesta' => 'required',
+            'nombre' => 'nullable', // Hacer el campo nombre opcional
+            'archivo' => 'nullable|file|max:10240', // Tamaño máximo de 10MB
+            // Agregar más validaciones aquí según tus necesidades
+        ]);
 
-    // Si el checkbox "Anónimo" está marcado
-    if ($request->has('anonimo')) {
-        // Si el checkbox "Anónimo" está marcado, asignar un valor predeterminado al campo "nombre"
-        $nombreAnonimo = "Anónimo";
-    
-        // Crear una nueva instancia del modelo PQR y guardar solo los campos requeridos
+        // Crear una nueva instancia del modelo PQR
         $pqr = new Pqr();
-        $pqr->tipo = $request->tipo;
-        $pqr->descripcion = $request->descripcion;
-        $pqr->respuesta = $request->respuesta;
-        $pqr->nombre = $nombreAnonimo;
-        $pqr->tipoDocumento = "Sin especificar";
-        $pqr->numero_documento = "Sin especificar";
-        $pqr->direccion = "Sin especificar";
-        $pqr->email = "Sin especificar";
-        $pqr->numeroTel = "Sin especificar";
-        //$pqr->numeroTel = "Sin especificar";
-        // Otros campos se dejarán como nulos si no se proporciona un valor
-        // Agregar aquí cualquier otro campo requerido que necesites guardar
-        $pqr->save();
-    } else {
-        // Si el checkbox "Anónimo" no está marcado, guardar todos los campos como lo estabas haciendo anteriormente
-        $pqr = new Pqr();
-        $pqr->tipo = $request->tipo;
-        $pqr->descripcion = $request->descripcion;
-        $pqr->nombre = $request->nombre;
-        $pqr->tipoDocumento = $request->tipoDocumento;
-        $pqr->numero_documento = $request->numero_documento;
-        $pqr->email = $request->email;
-        $pqr->numeroTel = $request->numeroTel;
-        $pqr->direccion = $request->direccion;
-        $pqr->respuesta = $request->respuesta;
-        // Agregar aquí cualquier otro campo que necesites guardar
-        $pqr->save();
-    }
-    
 
-        
+        // Asignar los valores a los campos del modelo
+        $pqr->tipo = $validatedData['tipo'];
+        $pqr->descripcion = $validatedData['descripcion'];
+        $pqr->respuesta = $validatedData['respuesta'];
+        $pqr->nombre = $request->has('anonimo') ? 'Anónimo' : $validatedData['nombre'];
+        $pqr->tipoDocumento = $request->has('anonimo') ? 'Sin especificar' : $request->input('tipoDocumento');
+        $pqr->numero_documento = $request->has('anonimo') ? 'Sin especificar' : $request->input('numero_documento');
+        $pqr->email = $request->has('anonimo') ? 'Sin especificar' : $request->input('email');
+        $pqr->numeroTel = $request->has('anonimo') ? 'Sin especificar' : $request->input('numeroTel');
+        $pqr->direccion = $request->has('anonimo') ? 'Sin especificar' : $request->input('direccion');
+
+        // Guardar el archivo en la ubicación deseada con nombre único generado por UUID y conservar su extensión original
+        if ($request->hasFile('archivo')) {
+            $archivo = $request->file('archivo');
+            // Genera un nombre único para el archivo utilizando un UUID y conserva su extensión original
+            $nombreArchivo = Str::uuid() . '.' . $archivo->getClientOriginalExtension();
+            // Especifica la ruta deseada para guardar el archivo
+            $ruta = 'archivos_pqr';
+            // Almacena el archivo en el almacenamiento con el nombre único generado
+            $archivo->storeAs($ruta, $nombreArchivo);
+            // Asigna el nombre del archivo al modelo
+            $pqr->archivo = $nombreArchivo;
+        }
+
+        // Guardar la PQR en la base de datos
+        $pqr->save();
 
         // Redireccionar al usuario a la página de inicio con un mensaje de éxito
-        return redirect('/')->with('status', 'La PQR se ha creado exitosamente.');
+        toastr()->success('La PQR se ha creado exitosamente.', 'Congrats');
+        return redirect('/')->with('status');
     }
-}
 
+}

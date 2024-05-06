@@ -6,8 +6,7 @@ use App\Http\Controllers\ConsultaPqrCiudadanoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NuevapqrController;
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +30,21 @@ Route::post('/crearnuevapqr', [
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::post('/consultar-pqr', [ConsultaPqrCiudadanoController::class, 'consultarPqrCiudadano'])->name('consultapqrciudadano');
+
+Route::get('/download/{id}', function ($id) {
+    $pqr = App\Models\Pqr::findOrFail($id);
+    $rutaArchivo = 'archivos_pqr/' . $pqr->archivo;
+
+   // Verificar si el archivo existe
+    if (Storage::exists($rutaArchivo)) {
+        return response()->download(storage_path('app/' . $rutaArchivo));
+    } else {
+        abort(404);
+    }
+})->name('download');
+//Route::get('descargar-archivo/{fileName}', [NuevapqrController::class, 'descargarArchivo'])->name('descargar.archivo');
+
+
 
 
 

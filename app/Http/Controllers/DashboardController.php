@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $pqrs = Pqr::all(); // Obtener todas las PQRs
+        $pqrs = Pqr::orderBy('id','desc')->get(); // Obtener todas las PQRs
 
         return view('dashboard', ['pqrs' => $pqrs]);
     }

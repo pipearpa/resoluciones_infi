@@ -27,10 +27,13 @@ class ConsultaPqrCiudadanoController extends Controller
         // Verificar si se encontró la PQR
         if ($pqr) {
             // Si se encontró, retornar la vista con los datos de la PQR
+            toastr()->success('Aquí está tu PQR','MIRA');
             return view('resultado_pqr', ['pqr' => $pqr]);
         } else {
             // Si no se encontró, mostrar un mensaje de error
-            return "No se encontró ninguna PQR con los datos proporcionados.";
+            
+            toastr()->error('No se encontró ninguna PQR con los datos proporcionados.', 'LO SENTIMOS');
+            return view('/consultapqrciudadano');
         }
     }
 }

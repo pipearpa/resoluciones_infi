@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('numeroTel');   
             $table->text('direccion');   
             $table->text('respuesta');   
+            $table->text('archivo');
         });
     }
 
