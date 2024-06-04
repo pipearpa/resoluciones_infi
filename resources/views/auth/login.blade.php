@@ -39,7 +39,7 @@
                         {{ __('Olvidaste tu contraseña?') }}
                     </a>
                 @endif
-                    
+
                 <x-primary-button class="ms-3">
                     {{ __('Log in') }}
                 </x-primary-button>
@@ -50,12 +50,12 @@
     <style>
         form{
             padding: 10px;
-            border-radius: 10px; 
-            background-color: #61a5c2;
+            border-radius: 10px;
+            background-color: #dbdcdd;
         }
         .containerInicio {
             padding: 10px;
-            background-color: #2a6f97;
+            background-color: #a9aaaa;
             border-radius: 10px;
             box-shadow: 0 5px 8px rgba(0, 0, 1, 0.8);
         }

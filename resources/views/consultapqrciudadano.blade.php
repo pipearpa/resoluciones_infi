@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,10 +101,9 @@
     .container {
         width: fit-content;
         margin: 0 auto;
-        background-color: #89c2d9;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         position: relative;
         margin-top: 210px;
     }
@@ -135,7 +131,7 @@
     }
 
     .btn {
-        background-color: #007bff;
+        background-color: #39bb36;
         color: #fff;
         padding: 10px 20px;
         border: none;
@@ -148,7 +144,7 @@
     }
 
     .btn:hover {
-        background-color: #0056b3;
+        background-color: #33D7A7;
     }
 
     /* Estilos del mensaje de error */
@@ -179,10 +175,8 @@
         top: 0px;
         display: flex;
         padding: 10px 20px;
-        background-color: #a9d6e5;
+        background-color: #f3f3f3;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
     }
 
     .custom-shape-divider-bottom-1712869018 {

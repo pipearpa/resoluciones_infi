@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('direccion');   
             $table->text('respuesta');   
             $table->text('archivo');
+            $table->string('estado')->default('Sin tramitar');
         });
     }
 

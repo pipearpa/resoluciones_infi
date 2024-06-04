@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConsultaPqrCiudadanoController;
@@ -29,20 +30,40 @@ Route::post('/crearnuevapqr', [
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
 Route::post('/consultar-pqr', [ConsultaPqrCiudadanoController::class, 'consultarPqrCiudadano'])->name('consultapqrciudadano');
 
 Route::get('/download/{id}', function ($id) {
     $pqr = App\Models\Pqr::findOrFail($id);
     $rutaArchivo = 'archivos_pqr/' . $pqr->archivo;
 
-   // Verificar si el archivo existe
+    // Verificar si el archivo existe
     if (Storage::exists($rutaArchivo)) {
         return response()->download(storage_path('app/' . $rutaArchivo));
     } else {
         abort(404);
     }
 })->name('download');
-//Route::get('descargar-archivo/{fileName}', [NuevapqrController::class, 'descargarArchivo'])->name('descargar.archivo');
+
+
+Route::put('/pqrs/{id}/marcar-en-tramite', 'App\Http\Controllers\NuevapqrController@marcarEnTramite')->name('pqrs.marcarEnTramite');
+
+Route::put('/pqrs/{id}/marcar-en-tramitada', 'App\Http\Controllers\NuevapqrController@marcarTramitada')->name('pqrs.marcarTramitada');
+
+Route::get('/pdf', [NuevapqrController::class,'pdf'])->name('pdf');
+
+//Route::get('/pdf/{pqrId}', [NuevapqrController::class,'pdf'])->name('pdf');
+
+//Route::get('/export-pdf/{pqr_id}', [NuevapqrController::class,'exportToPDF'])->name('export-pdf');
+
+Route::get('dashboard/register', [RegisteredUserController::class, 'create'])
+->name('register');
+
+Route::post('dashboard/register', [RegisteredUserController::class, 'store']);
+
+
+
+
 
 
 

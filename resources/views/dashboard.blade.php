@@ -1,106 +1,131 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+<x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"
-            style="padding: 8px;background-color: #c1eae9; border-radius: 20px;">
+            style="padding: 8px; border-radius: 20px;">
             <div class="contenido overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    <section class="filtro">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-tab="Sin tramitar" href="#">Sin tramitar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-tab="En trámite" href="#">En trámite</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-tab="Tramitada" href="#">Tramitada</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <a href="http://localhost/pqr_infi_mzls/public/pdf" class="btn" id="exportarPDF">
+                        <i class="fas fa-file-pdf"></i> Exportar a PDF
+                    </a>
                 </div>
+
                 <div id="paginated-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach ($pqrs as $index => $pqr)
-                        <div class="pqr-card">
-                            <div class="pqr-summary">
-                                <h1><strong> Tipo : {{ $pqr->tipo }} </strong></h1>
-                                <p style="font-size: 20px"> <strong>Descripción :</strong> {{ $pqr->descripcion }} </p>
-                                <span class="pqr-id">ID: {{ $pqr->id }}</span>
-                            </div>
+                    <ol class="list-group list-group-numbered">
+                        @foreach ($pqrs as $index => $pqr)
+                            <li class="pqr-card" data-estado="{{ $pqr->estado }}">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Tipo: {{ $pqr->tipo }}</div>
+                                    <p>ID: {{ $pqr->id }}</p>
+                                    <p>Estado: {{ $pqr->estado }}</p>
+                                </div>
+                                    <div class="pqr-actions">
+                                        <button class="btn btn-primary" onclick="openModal('{{ $pqr->id }}')">Ver
+                                            Detalles</button>
+                                    </div>
+                            </li>
 
-                            <div class="pqr-info">
-                                <p><strong>Fecha de creación:</strong> {{ $pqr->created_at }}</p>
-                                <p><strong>Usuario:</strong> {{ $pqr->nombre }}</p>
-                                <p><strong>Tipo de documento:</strong> {{ $pqr->tipoDocumento }}</p>
-                                <p><strong>Número de documento:</strong> {{ $pqr->numero_documento }}</p>
-                                <p><strong>Correo electrónico:</strong> {{ $pqr->email }}</p>
-                                <p><strong>Número de teléfono:</strong> {{ $pqr->numeroTel }}</p>
-                                <p><strong>Dirección:</strong> {{ $pqr->direccion }}</p>
-                                <p><strong>Medio de Respuesta:</strong> {{ $pqr->respuesta }}</p>
-                                <p><strong>Archivos Adjuntos:</strong> {{ $pqr->archivo }}</p>
-                            </div>
+                            <!-- Modal -->
+                            <div id="modal-{{ $pqr->id }}" class="modal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="closeModal('{{ $pqr->id }}')">&times;</span>
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="font-weight: 700;">PQR ID: {{ $pqr->id }}</h5>
 
-                            <div class="pqr-actions">
-                                <button class="btn btn-primary" onclick="openModal('{{ $pqr->id }}')">Ver
-                                    Detalles</button>
-                                {{-- <button class="btn btn-secondary" onclick="assignPqr(pqr.id)">Asignar</button>
-                                <button class="btn btn-success" onclick="resolvePqr(pqr.id)">Resolver</button>
-                                <button class="btn btn-warning" onclick="escalatePqr(pqr.id)">Escalar</button> --}}
-                            </div>
-                        </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Estado:</strong> {{ $pqr->estado }}</p>
+                                            <p><strong>Tipo:</strong> {{ $pqr->tipo }}</p>
+                                            <p><strong>Descripción:</strong> {{ $pqr->descripcion }}</p>
+                                            <br>
+                                            <hr>
+                                            <br>
+                                            <p><strong>Fecha de creación:</strong> {{ $pqr->created_at }}</p>
+                                            <p><strong>Usuario:</strong> {{ $pqr->nombre }}</p>
+                                            <p><strong>Tipo de documento:</strong> {{ $pqr->tipoDocumento }}</p>
+                                            <p><strong>Número de documento:</strong> {{ $pqr->numero_documento }}</p>
+                                            <p><strong>Correo electrónico:</strong> {{ $pqr->email }}</p>
+                                            <p><strong>Número de teléfono:</strong> {{ $pqr->numeroTel }}</p>
+                                            <p><strong>Dirección:</strong> {{ $pqr->direccion }}</p>
+                                            <p><strong>Medio de Respuesta:</strong> {{ $pqr->respuesta }}</p>
+                                            <p><strong>Nombre Archivo Adjuntos:</strong> {{ $pqr->archivo }}</p>
 
-                        <!-- Modal -->
-                        <div id="modal-{{ $pqr->id }}" class="modal">
-                            <div class="modal-content">
-                                <span class="close" onclick="closeModal('{{ $pqr->id }}')">&times;</span>
-                                <span class="pqr-id" style="font-size: 20px">ID: {{ $pqr->id }}</span>
-                                <hr>
-                                <h2 style="margin: 5px; font-size:20px;"><strong> Tipo : {{ $pqr->tipo }} </strong>
-                                </h2>
-                                <hr><br>
-                                <p><strong>Descripción :</strong> {{ $pqr->descripcion }}</p> <br>
-                                <hr>
-                                <p><strong>Fecha de creación:</strong> {{ $pqr->created_at }}</p>
-                                <hr>
-                                <p><strong>Usuario:</strong> {{ $pqr->nombre }}</p>
-                                <hr>
-                                <p><strong>Tipo de documento:</strong> {{ $pqr->tipoDocumento }}</p>
-                                <hr>
-                                <p><strong>Número de documento:</strong> {{ $pqr->numero_documento }}</p>
-                                <hr>
-                                <p><strong>Correo electrónico:</strong> {{ $pqr->email }}</p>
-                                <hr>
-                                <p><strong>Número de teléfono:</strong> {{ $pqr->numeroTel }}</p>
-                                <hr>
-                                <p><strong>Dirección:</strong> {{ $pqr->direccion }}</p>
-                                <hr>
-                                <p><strong>Medio de Respuesta:</strong> {{ $pqr->respuesta }}</p>
-                                <hr>
-                                <p><strong>Nombre Archivo Adjuntos:</strong> {{ $pqr->archivo }}</p>
-                                <hr>
-                                <!-- Agrega esto en tu vista donde muestras los detalles de la PQR -->
-                                <p><strong>Archivos Adjuntos:</strong>
-                                    @if ($pqr->archivo)
-                                        <a href="{{ route('download', $pqr->id) }}" style="color: red";">Descargar archivo</a>
-                                    @else
-                                        Sin archivo adjunto
-                                    @endif
-                                </p>
-                               
+                                            @if ($pqr->archivo)
+                                                <a href="{{ route('download', $pqr->id) }}" class="btn btn-primary">
+                                                    <i class="fas fa-download"></i> Descargar archivo
+                                                </a>
+                                            @else
+                                                <strong>Sin archivo adjunto</strong>
+                                            @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            @if ($pqr->estado === 'Sin tramitar')
+                                                <form action="{{ route('pqrs.marcarEnTramite', $pqr->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-primary">Marcar como En
+                                                        trámite</button>
+                                                </form>
+                                            @else
+                                                {{-- ($pqr->estado === 'En trámite') --}}
+                                                <form action="{{ route('pqrs.marcarTramitada', $pqr->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-primary">Marcar como
+                                                        Tramitada</button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </ol>
                 </div>
-
                 <!-- Aquí se encuentra el paginador -->
                 <div id="pagination" class="px-6 py-4 flex flex-wrap justify-center items-center">
                     <div id="acomodar">
-                        <button id="prev-page" class="pagination-control mr-2">Anterior</button>
-                        <span id="current-page" class="pagination-current"></span>
-                        <button id="next-page" class="pagination-control ml-2">Siguiente</button>
-                        <select id="items-per-page" class="ml-3">
-                            <option value="3">3 elementos por página</option>
-                            <option value="6">6 elementos por página</option>
-                            <option value="12">12 elementos por página</option>
-                            <option value="18">18 elementos por página</option>
-                            <!-- Agrega más opciones según sea necesario -->
-                        </select>
+                        <nav aria-label="Page navigation example">
+                            <div id="acomodar1">
+                                <select id="itemsPerPageSelect" style="width: 60px;">
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                </select>
+                            <ul class="pagination justify-content-center" id="pagination-container">
+                                <li class="page-item ">
+                                    <a class="page-link" id="prev-page" href="#">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" id="next-page" href="#">Next</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </nav>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -108,7 +133,67 @@
 </x-app-layout>
 
 <style>
-    /* PQR Card Container */
+
+    #exportarPDF {
+        position: relative;
+        display: flex;
+        width: fit-content;
+        left: 90%;
+        justify-content: flex-end;
+        background-color: lightslategrey;
+    }
+
+    #exportarPDF:hover {
+        background-color: #042042;
+        color: ghostwhite;
+    }
+
+    #acomodar1 {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    #iconoAgregar {
+        position: relative;
+        left: 23pc;
+        top: 16px;
+        /*         left: 18pc;
+        top: 1pc; */
+    }
+
+    /* Estilos para los nav-tabs */
+    .nav-tabs {
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 1rem;
+    }
+
+    .nav-item a {
+        color: black;
+    }
+
+    .nav-tabs .nav-item {
+        margin-bottom: -0.5px;
+        color: #000;
+    }
+
+    .nav-tabs .nav-link {
+        border: 1px solid transparent;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+    }
+
+    .nav-tabs .nav-link.active {
+        background-color: #042042;
+        border-color: #042042 #042042 #fff;
+        color: ghostwhite;
+    }
+
+    .nav-tabs .nav-link:hover {
+        background-color: #ebebeb;
+        color: #000;
+    }
+
     #paginated-content {
         display: grid;
         padding: 10px;
@@ -126,50 +211,16 @@
         max-width: 100%;
         /* Prevent cards from overflowing container */
         margin-bottom: 20px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
         /* Add spacing between cards */
-    }
-
-    /* PQR Summary */
-    .pqr-summary {
-        margin-bottom: 15px;
-    }
-
-    .pqr-summary h1 {
-        font-size: 18px;
-        margin-bottom: 5px;
-        color: #333;
-    }
-
-    .pqr-summary p {
-        font-size: 14px;
-        line-height: 1.5;
-        color: #666;
-        white-space: nowrap;
-        /* Evita que el texto se divida en varias líneas */
-        overflow: hidden;
-        /* Oculta el texto que excede el tamaño del contenedor */
-        text-overflow: ellipsis;
-        /* Muestra "..." al final del texto truncado */
     }
 
     .pqr-id {
         font-size: 12px;
         color: #aaa;
         margin-top: 5px;
-    }
-
-    /* PQR Info */
-    .pqr-info {
-        flex: 1;
-        /* Allow info section to grow */
-        margin-bottom: 15px;
-    }
-
-    .pqr-info p {
-        font-size: 14px;
-        line-height: 1.5;
-        color: #333;
-        margin-bottom: 5px;
     }
 
     /* PQR Actions */
@@ -181,36 +232,17 @@
     }
 
     .pqr-actions button {
-        padding: 8px 16px;
+        padding: 5px 5px;
         border: 1px solid #ddd;
-        border-radius: 4px;
+        border-radius: 25px;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
+        background-color: #ffcb00;
     }
 
     .pqr-actions button:hover {
         background-color: #eee;
-    }
-
-    /* Action Button Colors (Adjust as needed) */
-    /*     .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    } */
-
-    .btn-secondary {
-        background-color: #6c757d;
-        color: #fff;
-    }
-
-    .btn-success {
-        background-color: #28a745;
-        color: #fff;
-    }
-
-    .btn-warning {
-        background-color: #ffc107;
-        color: #000;
+        color: #333;
     }
 
     /* Responsive Adjustments (Optional) */
@@ -233,22 +265,15 @@
             flex-direction: initial;
         }
 
-        /* .pqr-summary {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: wrap;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    } */
-
         #acomodar {
             position: relative;
             left: 14px;
         }
-    }
 
+        #exportarPDF {
+            left: 62%;
+        }
+    }
 
     .pqr-card {
         background-color: #f7f7f7;
@@ -256,72 +281,9 @@
     }
 
     .contenido {
-        background-color: #e0eff5;
-        filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.2));
         border-radius: 15px;
     }
-
-    /* Estilos para el paginador */
-    .pagination-control {
-        padding: 8px 16px;
-        border: 1px solid #7eae89;
-        background-color: #fff;
-        color: #7eae89;
-        cursor: pointer;
-        border-radius: 20px;
-    }
-
-    #pagination {
-        background-color: #2c7da0;
-        gap: 15px;
-        color: white;
-        height: 75px;
-        margin: 0 auto;
-        width: fit-content;
-        border-radius: 60px;
-        position: relative;
-        bottom: 10px;
-    }
-
-    .pagination-control:hover {
-        background-color: #7eae89;
-        color: #fff;
-    }
-
-    .pagination-control[disabled] {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    /* Estilos para el indicador de página actual */
-    .pagination-current {
-        margin: 0 10px;
-        font-weight: bold;
-    }
-
-    /* Estilos para el contenedor de elementos paginados */
-    .item {
-        background-color: #f7f7f7;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        color: #333;
-    }
-
-    #items-per-page:hover {
-        background-color: #7eae89;
-        border: 1px solid #7eae89;
-        color: rgb(255, 255, 255);
-        border-radius: 20px;
-    }
-
-    #items-per-page {
-        border: 1px solid #7eae89;
-        color: #7eae89;
-        border-radius: 20px;
-    }
-
 
     /* Estilos adicionales para hacer el diseño más responsivo */
     @media screen and (max-width: 768px) {
@@ -339,11 +301,22 @@
             align-items: center;
             flex-direction: column;
             align-content: center;
+            bottom: 0;
         }
 
         #items-per-page {
             position: relative;
             left: 20px;
+        }
+
+        #iconoAgregar {
+            position: relative;
+            left: 3pc;
+        }
+
+        .nav-tabs {
+            display: flex;
+            width: 335px;
         }
     }
 
@@ -368,7 +341,7 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     /* Contenido del modal */
@@ -381,7 +354,8 @@
         margin: 15% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 100%;
+        overflow: scroll;
     }
 
     /* Botón para cerrar el modal */
@@ -399,6 +373,90 @@
         text-decoration: none;
         cursor: pointer;
     }
+
+
+    .page-link.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+    .page-item.disabled .page-link {
+        cursor: not-allowed;
+        color: #6c757d;
+    }
+
+    /* Estilos para el contenedor del selector */
+    #itemsPerPageSelect {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #ffffff;
+        color: #495057;
+        cursor: pointer;
+        outline: none;
+        transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    /* Estilos para el label */
+    #itemsPerPageSelect + label {
+        margin-right: 10px;
+        font-size: 1rem;
+        color: #495057;
+    }
+
+    /* Estilos al enfocar el selector */
+    #itemsPerPageSelect:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    /* Estilos para la paginación */
+    .pagination {
+        margin: 0;
+    }
+
+    .pagination .page-item .page-link {
+        color: #000000;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
+        pointer-events: none;
+        background-color: transparent;
+    }
+
+    .pagination .page-item.active .page-link {
+        z-index: 1;
+        color: ghostwhite;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .pagination .page-link {
+        position: relative;
+        /* display: block; */
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        border: 1px solid #dee2e6;
+        text-decoration: none;
+    }
+
+    .pagination .page-link:hover {
+        z-index: 2;
+        color: #0056b3;
+        text-decoration: none;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+    }
+
+    .active>.page-link, .page-link.active {
+        z-index: 0;
+        background-color: #042042;
+        color: #fff !important;
+    }
 </style>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -406,20 +464,19 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-O4lQ2B74G25gR169MCw6pQ1q4kZ05Q4Qz9i7Q7Q7tWR7F+qP0pK6U1ZI4hQzV3" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let itemsPerPage = 3; // Número de elementos por página inicial
         const contentContainer = document.getElementById('paginated-content');
-        const paginationContainer = document.getElementById('pagination');
-        const prevPageButton = document.getElementById('prev-page');
-        const nextPageButton = document.getElementById('next-page');
-        const currentPageSpan = document.getElementById('current-page');
-        const itemsPerPageSelect = document.getElementById('items-per-page');
-
-        // Datos de ejemplo
+        const paginationContainer = document.getElementById('pagination-container');
+        const itemsPerPageSelect = document.getElementById('itemsPerPageSelect');
         const totalItems = {{ count($pqrs) }}; // Total de elementos
         let currentPage = 1; // Página actual
+        let totalPages = Math.ceil(totalItems / itemsPerPage); // Total de páginas
 
         // Función para mostrar los elementos de la página actual
         function displayCurrentPage() {
@@ -432,42 +489,78 @@
 
             // Muestra solo los elementos de la página actual
             for (let i = startIndex; i < endIndex; i++) {
-                items[i].style.display = 'block';
+                items[i].style.display = 'flex';
             }
         }
 
         // Función para generar el paginador
         function generatePagination() {
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            paginationContainer.innerHTML = ''; // Limpia el contenedor de paginación
+            const prevPageButton = document.createElement('li');
+            prevPageButton.classList.add('page-item');
+            prevPageButton.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+            prevPageButton.addEventListener('click', () => goToPage(currentPage - 1));
+            paginationContainer.appendChild(prevPageButton);
 
-            currentPageSpan.textContent = `Página ${currentPage} de ${totalPages}`;
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.classList.add('page-item');
+                pageItem.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+                pageItem.querySelector('.page-link').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToPage(i);
+                });
+                paginationContainer.appendChild(pageItem);
+            }
 
-            prevPageButton.disabled = currentPage === 1;
-            nextPageButton.disabled = currentPage === totalPages;
+            const nextPageButton = document.createElement('li');
+            nextPageButton.classList.add('page-item');
+            nextPageButton.innerHTML = `<a class="page-link" href="#">Next</a>`;
+            nextPageButton.addEventListener('click', () => goToPage(currentPage + 1));
+            paginationContainer.appendChild(nextPageButton);
+
+            // Actualiza los estados de los botones y la clase activa
+            updatePaginationControls();
+        }
+
+        // Función para actualizar los estados de los botones y la clase activa
+        function updatePaginationControls() {
+            const pageLinks = paginationContainer.querySelectorAll('.page-link');
+            pageLinks.forEach(link => link.classList.remove('active'));
+
+            const prevPageButton = paginationContainer.querySelector('.page-item:first-child .page-link');
+            const nextPageButton = paginationContainer.querySelector('.page-item:last-child .page-link');
+
+            prevPageButton.parentElement.classList.toggle('disabled', currentPage === 1);
+            nextPageButton.parentElement.classList.toggle('disabled', currentPage === totalPages);
+
+            const currentPageLink = paginationContainer.querySelector(`.page-link[data-page="${currentPage}"]`);
+            if (currentPageLink) {
+                currentPageLink.classList.add('active');
+            }
         }
 
         // Función para ir a una página específica
         function goToPage(page) {
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            currentPage = Math.max(1, Math.min(page, totalPages));
-            displayCurrentPage();
-            generatePagination();
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                displayCurrentPage();
+                updatePaginationControls();
+            }
         }
 
-        // Event listeners para botones de paginación
-        prevPageButton.addEventListener('click', () => goToPage(currentPage - 1));
-        nextPageButton.addEventListener('click', () => goToPage(currentPage + 1));
-
-        itemsPerPageSelect.addEventListener('change', function() {
-            itemsPerPage = parseInt(this.value);
-            currentPage = 1; // Volver a la primera página al cambiar el número de elementos por página
-            displayCurrentPage();
+        // Event listener para el cambio de selección de elementos por página
+        itemsPerPageSelect.addEventListener('change', (event) => {
+            itemsPerPage = parseInt(event.target.value);
+            totalPages = Math.ceil(totalItems / itemsPerPage);
+            currentPage = 1; // Reiniciar a la primera página
             generatePagination();
+            displayCurrentPage();
         });
 
-        // Mostrar la página actual y generar el paginador al cargar la página
-        displayCurrentPage();
+        // Inicializar la paginación y mostrar la primera página
         generatePagination();
+        displayCurrentPage();
     });
 </script>
 
@@ -482,4 +575,38 @@
         var modal = document.getElementById('modal-' + id);
         modal.style.display = 'none';
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabs = document.querySelectorAll('.nav-link');
+        const pqrsCards = document.querySelectorAll('.pqr-card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function(event) {
+                event.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+
+                // Oculta todas las tarjetas
+                pqrsCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+
+                // Muestra las tarjetas del estado correspondiente
+                pqrsCards.forEach(card => {
+                    const estadoCard = card.getAttribute('data-estado');
+
+                    if (estadoCard === tabId) {
+                        card.style.display = 'flex';
+                    }
+                });
+
+                // Cambia la clase activa de la pestaña seleccionada
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    });
 </script>

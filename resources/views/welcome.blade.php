@@ -25,8 +25,10 @@
                 height: auto; /* Mantiene la proporción de la imagen */
                 filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.5));
             }
+
             .nuevaPqr ,.consultarPqr {
-                background-color: #468faf; /* Blue background */
+                font-weight: 700;
+                background-color: #39bb36;
                 color: #fff; /* White text color */
                 border: none; /* Remove default border */
                 padding: 15px 30px; /* Adjust padding */
@@ -38,10 +40,10 @@
                 }
 
             .nuevaPqr:hover {
-                background-color: #2a6f97; /* Darker blue on hover */
+                background-color: #33D7A7; /* Darker blue on hover */
                 }
             .consultarPqr:hover {
-                background-color: #2a6f97; /* Darker blue on hover */
+                background-color: #33D7A7; /* Darker blue on hover */
                 }
 
             .contenedor-main {
@@ -53,10 +55,8 @@
                 padding: 15px;
                 width: 45%; /* Ajusta el ancho según sea necesario */
                 float: right; /* Para ubicar a la derecha */
-                background-color: #89c2d9;
                 margin:0 auto;
                 border-radius:20px;
-                box-shadow: 0 5px 8px rgba(0, 0, 0.1, 0.3);
             }
 
             .Botones {
@@ -64,10 +64,8 @@
                 width: 45%; /* Ajusta el ancho según sea necesario */
                 float: left; /* Para ubicar a la izquierda */
                 text-align: center; /* Centra el texto */
-                background-color: #89c2d9;
                 margin:0 auto;
                 border-radius:20px;
-                box-shadow: 0 5px 8px rgba(0, 0, 0.1, 0.3);
             }
                         /* /DECORACIÓN FOOTER/ */
             .custom-shape-divider-bottom-1712869018 {
@@ -92,7 +90,6 @@
                 fill: #265073;
             }
 
-            
             /* /#D369C1 COLOR POR DEFECTO DE LA DECORACIÓN DE ABAJO/ */
 
             /* For mobile devices */
@@ -109,10 +106,11 @@
                 * {
                     overflow-x: hidden;
                 }
-            
+
                 .navbar {
                     flex-direction: column;
                     align-items: flex-start;
+                    background-color: #f3f3f3;
                 }
 
                 .nav-links {
@@ -125,7 +123,7 @@
                 }
 
                 .contenedor-main {
-                    
+
                     display: flex;
                     flex-direction: column;
                     flex-wrap: wrap;
@@ -147,17 +145,15 @@
                 .parrafo h2 {
                     overflow: hidden;
                 }
-
-                .footer-diseño {
-                    justify-content: center;
-                }
             }
 
             .footer-diseño {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: flex-end;
-                align-content: center;
+                align-content: flex-end;
+                flex-direction: column;
+                align-items: center;
             }
 
             .navbar {
@@ -165,12 +161,10 @@
                 justify-content: space-between;
                 align-items: stretch;
                 padding: 10px 20px; /* Ajusta el espaciado según sea necesario */
-                background-color: #a9d6e5; /* Color de fondo de la navbar */
+                background-color: #f3f3f3; /* Color de fondo de la navbar */
                 box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
                 flex-wrap: wrap;
                 flex-direction: row;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
             }
 
             .nav-link {
@@ -180,6 +174,7 @@
                 text-decoration: none; /* Sin subrayado */
                 color: #333; /* Color del texto */
                 transition: cubic-bezier(0.3s ease) ; /* Transición suave */
+                font-weight: bold;
             }
 
             .logo-container {
@@ -196,12 +191,12 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-            
+
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#62e769] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                         <div class="flex lg:justify-center lg:col-start-2"></div>
-                        
+
                         @if (Route::has('login'))
                         <nav class="navbar container-fluid">
                             <div class="logo-container">
@@ -215,14 +210,11 @@
                                         <button id="dropdownButton" class="nav-link dropdown-toggle">☰ Menú</button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownButton">
                                                 <a href="{{ route('login') }}" class="dropdown-item">Iniciar Sesión</a>
-                                            @if (Route::has('register'))
-                                                <a href="{{ route('register') }}" class="dropdown-item">Registrarme</a>
-                                            @endif
                                         </div>
                                     </div>
                                 @endauth
                             </div>
-                            
+
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -289,9 +281,9 @@
                                         }
 
                                         .footer-diseño {
-                                            justify-content: center;
+                                            align-content: center;
                                         }
-                                        
+
                                     }
 
                             </style>
@@ -318,7 +310,8 @@
                                     <div class="contenedor-main">
                                         <div class="parrafo col-lg-6">
                                             <h2><b>SISTEMA DE PETICIONES, QUEJAS Y <BR>RECLAMOS (PQR)</b></h2>
-                                            <br>
+
+                                            <hr>
                                             <p><b>INFI-MANIZALES</b> ofrece a los ciudadanos un sistema de peticiones, quejas y reclamos, por medio del cual podrá realizar solicitudes y tener un control sobre la misma, permitiendo saber si se encuentra en trámite o si fue solucionada y las observaciones respectivas.</p>
                                         </div>
                                         <div class="Botones col-lg-6">
@@ -353,7 +346,7 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
-</html> 
+</html>
 <div class="custom-shape-divider-bottom-1712869018">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"      preserveAspectRatio="none">
                             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>

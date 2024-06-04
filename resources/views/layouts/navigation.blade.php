@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <nav x-data="{ open: false }" class="principal_Nav container-fluid shadow">
     <!-- Primary Navigation Menu -->
     <div class=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,11 +12,20 @@
                     </a>
                 </div>
 
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')" style="display: flex;
+                        flex-direction: column;">
+                        <svg xmlns="http://localhost/pqr_infi_mzls/public/dashboard/register" width="25" height="25" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                            <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                        <p>Agregar Usuarios</p></svg>
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -32,6 +43,7 @@
                             </div>
                         </button>
                     </x-slot>
+
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
@@ -65,12 +77,22 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden" style="background-color: white;
+    z-index: 2;
+    position: relative;
+    mask-image: linear-gradient(to top, ghostwhite 95%, transparent);">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                <svg xmlns="http://localhost/pqr_infi_mzls/public/dashboard/register" width="30" height="30" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                <p>Agregar Usuarios</p></svg>
+            </x-nav-link>
         </div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -101,8 +123,14 @@
 
 <style>
     .principal_Nav {
-        background-color: #a9d6e5;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        background-color: #f3f3f3;
+        height: 70px;
     }
+    #iconoAgregar {
+        position: relative;
+        left: 23pc;
+        top: 16px;
+    }
+
+
 </style>

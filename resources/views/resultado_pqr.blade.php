@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +63,7 @@
             cursor: pointer;
             font-size: 16px;
             display: flex;
-            position:relative;
+            position: relative;
             width: fit-content;
             margin: 0 auto;
             text-decoration: none;
@@ -73,6 +74,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Detalle de PQR</h1>
@@ -83,6 +85,10 @@
         <div class="field">
             <label>Tipo:</label>
             <p>{{ $pqr->tipo }}</p>
+        </div>
+        <div class="field">
+            <label>Estado PQR:</label>
+            <p>{{ $pqr->estado }}</p>
         </div>
         <div class="field">
             <label>Descripción:</label>
@@ -120,9 +126,26 @@
             <label>Numero Telefono:</label>
             <p>{{ $pqr->numeroTel }}</p>
         </div>
-        <br/>
+        <div class="field">
+            <label>Numero Telefono:</label>
+            <p>{{ $pqr->numeroTel }}</p>
+        </div>
+        <div class="field">
+            <label>Archivos Adjuntos:</label>
+            <p></p>
+        </div>
+        @if ($pqr->archivo)
+            <a href="{{ route('download', $pqr->id) }}" class="btn btn-primary"
+                style="width:fit-content; margin:0 auto;">
+                <i class="fas fa-download"></i> Descargar archivo
+            </a>
+        @else
+            <strong style="margin: 0 auto;"> Sin archivo adjunto </strong>
+        @endif
+        <br />
 
         <a href="http://localhost/pqr_infi_mzls/public" class="btn">Volver</a>
     </div>
 </body>
+
 </html>
