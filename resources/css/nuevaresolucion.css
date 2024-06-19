@@ -1,0 +1,104 @@
+    #descripcion {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        #descripcion {
+            width: 100%;
+        }
+
+    }
+
+    .logo {
+        max-width: 100px;
+        /* Ajusta el tamaño máximo del logo según sea necesario */
+        height: auto;
+        /* Mantiene la proporción de la imagen */
+        filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.5));
+    }
+
+    .creaReso {
+        padding: 20px;
+        display: grid;
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        padding: 10px 20px;
+        /* Ajusta el espaciado según sea necesario */
+        background-color: #f3f3f3;
+        /* Color de fondo de la navbar */
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+        /* Sombra suave */
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .custom-shape-divider-bottom-1712869018 {
+        margin: 0;
+        padding: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        /* Para que esté detrás del contenido */
+        overflow: hidden;
+        transform: rotate(180deg);
+    }
+
+    .custom-shape-divider-bottom-1712869018 svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 154px;
+    }
+
+    .custom-shape-divider-bottom-1712869018 .shape-fill {
+        fill: #265073;
+    }
+
+    .form-control[type=file] {
+        position: relative;
+        right: 13px;
+        width: 170%;
+    }
+
+    /* Responsive styles for smaller screens */
+    @media (max-width: 768px) {
+        .custom-shape-divider-bottom-1712869018 svg {
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-control[type=file] {
+            width: 100%;
+        }
+    }
+
+    #enviar {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    #enviar {
+        background-color: #39bb36;
+    }
+
+    #enviar:hover {
+        background-color: #33D7A7;
+    }
+
+    .grid-form {
+        display: grid;
+        grid-template-columns: repeat(300px, 1fr); /* Dos columnas */
+        gap: 20px; /* Espacio entre elementos */
+        align-items: center;
+    }

@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pqr;
-
+use App\Models\Resolucion;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $pqrs = Pqr::orderBy('id','desc')->get(); // Obtener todas las PQRs
+        $resolucions = Resolucion::orderBy('id','desc')->get(); // Obtener todas las PQRs
 
-        return view('dashboard', ['pqrs' => $pqrs]);
+        return view('dashboard', ['resolucions' => $resolucions]);
     }
 }

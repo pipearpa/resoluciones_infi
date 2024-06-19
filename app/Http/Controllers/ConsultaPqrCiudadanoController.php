@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pqr;
+use App\Models\Resolucion;
 
 class ConsultaPqrCiudadanoController extends Controller
 {
@@ -20,15 +20,15 @@ class ConsultaPqrCiudadanoController extends Controller
         $numero_documento = $request->input('numero_documento');
 
         // Consultar la PQR utilizando los datos proporcionados
-        $pqr = Pqr::where('id', $id)
+        $resolucion = Resolucion::where('id', $id)
             ->where('numero_documento', $numero_documento)
             ->first();
 
         // Verificar si se encontró la PQR
-        if ($pqr) {
+        if ($resolucion) {
             // Si se encontró, retornar la vista con los datos de la PQR
             toastr()->success('Aquí está tu PQR','MIRA');
-            return view('resultado_pqr', ['pqr' => $pqr]);
+            return view('resultado_pqr', ['pqr' => $resolucion]);
         } else {
             // Si no se encontró, mostrar un mensaje de error
             
